@@ -20,6 +20,7 @@ class AuteursController extends AppController
         parent::__construct();
         $this->loadModel('Auteur');
         $this->loadModel('Fikr');
+        $this->loadModel('Region');
     }
     /**
      * Index function
@@ -28,14 +29,14 @@ class AuteursController extends AppController
      */
     public function index(){
         $auteurs = $this->Auteur->allWithRegion();
-        $fikrs = $this->Fikr->all();
+        $regions = $this->Region->all();
         /**
          * Génération des vues grace à la fonction render (Core\Controller)
          * Contenir les variables et leurs valeurs grace à la fonction compact de php
          * @param String la vue
          * @param Array variables à contenir
          */ 
-        $this->render('auteurs.index', compact('auteurs', 'fikrs'));
+        $this->render('auteurs.index', compact('auteurs', 'regions'));
     }
     /**
      * Detail function

@@ -50,7 +50,7 @@ class AuteurTable extends Table
      */
     public function allWithRegion(){
         return $this->query("
-            SELECT auteurs.id, auteurs.nom, auteurs.prenom, regions.titre
+            SELECT auteurs.id, auteurs.nom, auteurs.prenom, auteurs.description, auteurs.photo, regions.titre
             FROM auteurs
             LEFT JOIN regions ON region=regions.id
         ");

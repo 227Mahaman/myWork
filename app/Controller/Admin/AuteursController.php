@@ -28,7 +28,7 @@ class AuteursController extends AppController
                 $dossier_tmp_name = $_FILES['fichier']['tmp_name'];
                 $dossier_dest = 'images/'.$dossier_name;
 
-                $extensions_autorisees = array('.jpeg', '.png');
+                $extensions_autorisees = array('.jpg', '.jpeg', '.png');
                 if(in_array($dossier_extension, $extensions_autorisees))
                 {
                     if(move_uploaded_file($dossier_tmp_name, $dossier_dest))
