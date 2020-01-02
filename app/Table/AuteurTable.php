@@ -37,12 +37,12 @@ class AuteurTable extends Table
      * Tous les auteurs
      * @return
      */
-    public function all(){
+    /**public function all(){
         return $this->query("
             SELECT auteurs.id, auteurs.nom, auteurs.prenom
             FROM auteurs
         ");
-    }
+    }*/
     /**
      * All With Region function
      * Tous les auteurs avec leurs régions
