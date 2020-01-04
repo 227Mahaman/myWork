@@ -1,8 +1,10 @@
 <?php
+$title="Annonce | Catégorie";
 $accueil = "";
-$annonce = "active";
-$fikr = "";
-$article = "";
+$accueilClass = "";
+$annonceClass = "active";
+$fikrClass = "";
+$articleClass = "";
 $contactClass= "";
 ?>
 <div class="banniere"></div>
@@ -12,7 +14,7 @@ $contactClass= "";
         <div class="container">
             <?php foreach($annonces as $post): ?>
                 <article class="article">
-                    <a href="article.php" class="article-img"><img src="article.jpg" alt=""></a>
+                    <a href="article.php" class="article-img"><img src="<?= $post->photo; ?>" alt=""></a>
                     <div class="article-date">Publié le <?= $post->date; ?></div>
                     <h2 class="article-title"><a href="<?= $post->url ?>" ><?= $post->titre; ?></a></h2>
                     <p>

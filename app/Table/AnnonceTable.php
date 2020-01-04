@@ -14,7 +14,7 @@ class AnnonceTable extends Table
      */
     public function last(){
         return $this->query("
-            SELECT annonces.id, annonces.titre, annonces.description, annonces.auteur,  annonces.date, annonces.lieu, categories.titre as categorie 
+            SELECT annonces.id, annonces.titre, annonces.description, annonces.auteur,  annonces.date, annonces.lieu, annonces.photo, categories.titre as categorie 
             FROM annonces 
             LEFT JOIN categories ON category_id=categories.id
             ORDER BY annonces.date DESC
@@ -29,7 +29,7 @@ class AnnonceTable extends Table
      */
     public function lastByCategory($category_id){
         return $this->query("
-            SELECT annonces.id, annonces.titre, annonces.description, annonces.auteur,  annonces.date, annonces.lieu, categories.titre as categorie 
+            SELECT annonces.id, annonces.titre, annonces.description, annonces.auteur,  annonces.date, annonces.lieu, annonces.photo, categories.titre as categorie 
             FROM annonces 
             LEFT JOIN categories ON category_id=categories.id
             WHERE annonces.category_id = ?
@@ -44,7 +44,7 @@ class AnnonceTable extends Table
      */
     public function findWithCategory($id){
         return $this->query("
-        SELECT annonces.id, annonces.titre, annonces.description, annonces.auteur,  annonces.date, annonces.lieu, categories.titre as categorie 
+        SELECT annonces.id, annonces.titre, annonces.description, annonces.auteur,  annonces.date, annonces.lieu, annonces.photo, categories.titre as categorie 
         FROM annonces 
         LEFT JOIN categories ON category_id=categories.id
         WHERE annonces.id = ?", [$id], true);

@@ -68,12 +68,13 @@ class AnnoncesController extends AppController
      */
     public function detail(){
         $annonce = $this->Annonce->findWithCategory($_GET['id']);
+        $categories = $this->Category->all();
         /**
         * Génération de la vue grace à la fonction render (Core\Controller)
         * Contenir la variable et sa valeur grace à la fonction compact de php
         * @param String la vue
         * @param Array variables à contenir
         */
-        $this->render('annonces.detail', compact('annonce'));
+        $this->render('annonces.detail', compact('annonce', 'categories'));
     }
 }

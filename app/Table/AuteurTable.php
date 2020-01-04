@@ -64,4 +64,13 @@ class AuteurTable extends Table
             WHERE auteurs.id = ?
         ", [$id]);
     }
+
+    public function lastByRegion($region_id){
+        return $this->query("
+            SELECT auteurs.id, auteurs.nom, auteurs.prenom, auteurs.description, auteurs.photo, regions.titre
+            FROM auteurs 
+            LEFT JOIN regions ON region=regions.id
+            WHERE auteurs.region = ?
+        ",[$region_id]);
+    }
 }

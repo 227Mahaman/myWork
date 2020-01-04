@@ -7,6 +7,7 @@
         <tr>
             <td>ID</td>
             <td>Titre</td>
+            <td>Photo</td>
             <td>Actions</td>
         </tr>
     </thead>
@@ -15,6 +16,7 @@
             <tr>
             <td><?= $post->id; ?></td>
             <td><?= $post->titre; ?></td>
+            <td><?= $post->photo; ?></td>
             <td>
                 <a class="btn btn-primary" href="?p=admin.annonces.edit&id=<?= $post->id; ?>">Editer</a>
                 <form action="?p=admin.annonces.delete" method="post" style="display: inline;">

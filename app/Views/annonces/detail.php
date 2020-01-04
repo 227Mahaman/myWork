@@ -11,7 +11,7 @@ $contactClass= "";
     <main class="main">
         <div class="container">
             <article class="article">
-                <a href="article.php" class="article-img"><img src="article.jpg" alt=""></a>
+                <a href="article.php" class="article-img"><img src="<?= $annonce->photo ?>" alt=""></a>
                 <div class="article-date">Publié le <?= $annonce->date; ?></div>
                 <h2 class="article-title"><a href="<?= $annonce->url; ?>" ><?= $annonce->titre; ?></a></h2>
                 <h3><?= $annonce->categorie;?></h3>
@@ -24,11 +24,9 @@ $contactClass= "";
     <aside class="sidebar">
         <h4 class="sidebar-title">Annonces</h4>
         <ul>
-            <li><a href="#" data-count="10">Majliss</a></li>
-            <li><a href="#" data-count="8">Tafsir</a></li>
-            <li><a href="#" data-count="6">Confèrence</a></li>
-            <li><a href="#" data-count="2">Ressources</a></li>
-            <li><a href="#" data-count="1">Bonnes pratiques</a></li>
+            <?php foreach($categories as $categorie): ?>
+                <li><a href="<?= $categorie->url ?>" data-count="1"><?= $categorie->titre; ?></a></li>
+            <?php endforeach; ?>
         </ul>
         <hr>
         <h4 class="sidebar-title">Fikr</h4>

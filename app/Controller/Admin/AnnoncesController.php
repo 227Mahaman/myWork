@@ -23,23 +23,40 @@ class AnnoncesController extends AppController
 
     public function add(){
         if(!empty($_POST)){
-            $result = $this->Annonce->create([
-                'titre' => $_POST['titre'],
-                'description' => $_POST['description'],
-                'auteur' => $_POST['auteur'],
-                'date' => $_POST['date'],
-                'lieu' => $_POST['lieu'],
-                'category_id' => $_POST['categorie']
-            ]);
-            /**
-             * Dès que l'insertion s'est bien passé
-             * On redirige vers l' annonces.edit, tout
-             * en recureperant l'id de l'annonce, à
-             * travers App::getInstance()->getDb()->lastInsertId()
-             * @param result
-             */
-            if($result){
-                return $this->index();
+            if(!empty($_FILES)){
+                $dossier_name = $_FILES['fichier']['name'];
+                $dossier_type = $_FILES['fichier']['type'];
+                $dossier_extension = strrchr($dossier_name, ".");
+                
+                $dossier_tmp_name = $_FILES['fichier']['tmp_name'];
+                $dossier_dest = 'images/'.$dossier_name;
+
+                $extensions_autorisees = array('.jpg', '.jpeg', '.png');
+                if(in_array($dossier_extension, $extensions_autorisees))
+                {
+                    if(move_uploaded_file($dossier_tmp_name, $dossier_dest))
+                    {
+                        $result = $this->Annonce->create([
+                            'titre' => $_POST['titre'],
+                            'description' => $_POST['description'],
+                            'auteur' => $_POST['auteur'],
+                            'date' => $_POST['date'],
+                            'lieu' => $_POST['lieu'],
+                            'category_id' => $_POST['categorie'],
+                            'photo' => $dossier_dest
+                        ]);
+                        /**
+                         * Dès que l'insertion s'est bien passé
+                         * On redirige vers l' annonces.edit, tout
+                         * en recureperant l'id de l'annonce, à
+                         * travers App::getInstance()->getDb()->lastInsertId()
+                         * @param result
+                         */
+                        if($result){
+                            return $this->index();
+                        }
+                    }
+                }
             }
         }
         $this->loadModel('Category');
@@ -50,16 +67,33 @@ class AnnoncesController extends AppController
 
     public function edit(){
         if(!empty($_POST)){
-            $result = $this->Annonce->update($_GET['id'], [
-                'titre' => $_POST['titre'],
-                'description' => $_POST['description'],
-                'auteur' => $_POST['auteur'],
-                'date' => $_POST['date'],
-                'lieu' => $_POST['lieu'],
-                'category_id' => $_POST['category_id']
-            ]);
-            if($result){
-                return $this->index();
+            if(!empty($_FILES)){
+                $dossier_name = $_FILES['fichier']['name'];
+                $dossier_type = $_FILES['fichier']['type'];
+                $dossier_extension = strrchr($dossier_name, ".");
+                
+                $dossier_tmp_name = $_FILES['fichier']['tmp_name'];
+                $dossier_dest = 'images/'.$dossier_name;
+
+                $extensions_autorisees = array('.jpg', '.jpeg', '.png');
+                if(in_array($dossier_extension, $extensions_autorisees))
+                {
+                    if(move_uploaded_file($dossier_tmp_name, $dossier_dest))
+                    {
+                        $result = $this->Annonce->update($_GET['id'], [
+                            'titre' => $_POST['titre'],
+                            'description' => $_POST['description'],
+                            'auteur' => $_POST['auteur'],
+                            'date' => $_POST['date'],
+                            'lieu' => $_POST['lieu'],
+                            'category_id' => $_POST['category_id'],
+                            'photo' => $dossier_dest
+                        ]);
+                        if($result){
+                            return $this->index();
+                        }
+                    }
+                }
             }
         }
         $annonce = $this->Annonce->find($_GET['id']);

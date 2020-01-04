@@ -53,4 +53,20 @@ class AuteursController extends AppController
         */
         $this->render('auteurs.detail', compact('auteur'));
     }
+
+    public function region(){
+        $region = $this->Region->find($_GET['id']);
+        if($region === false){
+            $this->notFound();
+        }
+        $auteurs = $this->Auteur->lastByRegion($_GET['id']);
+        $regions = $this->Region->all();
+        /**
+         * Génération de la vue grace à la fonction render (Core\Controller)
+         * Contenir les variables et leurs valeurs grace à la fonction compact de php
+         * @param String la vue
+         * @param Array variables à contenir
+         */
+        $this->render('auteurs.region', compact('auteurs', 'regions', 'region'));
+    }
 }

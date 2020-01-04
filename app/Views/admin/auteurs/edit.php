@@ -3,7 +3,7 @@
     <?= $form->input('nom', 'Nom'); ?>
     <?= $form->input('prenom', 'Prenom'); ?>
     <?= $form->select('region', 'Région', $regions); ?>
-    <?= $form->input('description', 'Bibliographie'); ?>
+    <?= $form->input('description', 'Bibliographie', ['type' => 'textarea']); ?>
     <input type="file" name="fichier"/>
     <button class="btn btn-primary">Sauvegarder</button>
 </form>
