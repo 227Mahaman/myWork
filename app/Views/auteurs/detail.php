@@ -14,7 +14,7 @@ $auteurClass = "active";
                 <article class="article">
                     <!-- <a href="article.php" class="article-img"><img src="img/article.jpg" alt=""></a> -->
                     <div class="article-date">Publié le <?= $fk->date;?></div>
-                    <h2 class="article-title"><a href="" target="_blank"><?= $fk->titre ?></a></h2>
+                    <h2 class="article-title"><a href="#"><?= $fk->titre ?></a></h2>
                     <p>
                         <span class="important">Livre: <?= $fk->livre;?>
                     </p>

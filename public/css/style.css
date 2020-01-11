@@ -59,7 +59,7 @@ body, html {
 
 .banniere {
     height: 427px;
-    background: no-repeat center center / cover url("../img/header1.jpg");
+    background: no-repeat center center / cover url("../img/voie.jpg");
     /**background: no-repeat center center / cover url("public/img/header1.jpg");*/
 }
 

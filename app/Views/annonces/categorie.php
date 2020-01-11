@@ -1,8 +1,8 @@
 <?php
 $title="Annonce | Catégorie";
 $accueil = "";
-$accueilClass = "";
-$annonceClass = "active";
+$accueilClass = "active";
+$annonceClass = "";
 $fikrClass = "";
 $articleClass = "";
 $contactClass= "";

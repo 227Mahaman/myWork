@@ -58,7 +58,7 @@ class AuteurTable extends Table
 
     public function findWithFikr($id){
         return $this->query("
-            SELECT auteurs.id, auteurs.nom, auteurs.prenom, fikrs.titre, fikrs.livre, fikrs.date
+            SELECT auteurs.id, auteurs.nom, auteurs.prenom, fikrs.id as fikr, fikrs.titre, fikrs.livre, fikrs.date
             FROM fikrs
             LEFT JOIN auteurs ON auteur=auteurs.id
             WHERE auteurs.id = ?

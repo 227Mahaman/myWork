@@ -1,7 +1,7 @@
 <?php
 $title="Annonce";
-$accueilClass = "";
-$annonceClass = "active";
+$accueilClass = "active";
+$annonceClass = "";
 $fikrClass = "";
 $articleClass = "";
 $contactClass= "";

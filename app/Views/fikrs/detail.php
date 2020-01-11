@@ -13,7 +13,11 @@ $contactClass= "";
                 <article class="article">
                     <!-- <a href="article.php" class="article-img"><img src="img/article.jpg" alt=""></a> -->
                     <div class="article-date">Publié le <?= $data->date;?></div>
-                    <h2 class="article-title"><a href="<?= $data->chemin; ?>" target="_blank"><?= $data->lecture ?></a></h2>
+                    <h2 class="article-title"><a href="<?= $data->chemin; ?>" download="<?= $data->lecture ?>"><?= $data->lecture ?></a></h2>
+                    <p>
+                        <span class="important"><a href="<?= $data->chemin; ?>"><strong><i style="color: blue;">Lire</i></strong></a> |
+                        <span class="important"><a href="<?= $data->chemin; ?>" download="<?= $data->lecture ?>"><strong><i style="color: blue;">Télécharger</i></strong></a>
+                    </p>
                 </article>
             <?php endforeach; ?>
         </div>

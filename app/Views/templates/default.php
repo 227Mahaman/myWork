@@ -18,7 +18,7 @@
     <header class="topbar">
         <nav>
             <a href="index.php?p=annonces.index" class="menu-item <?= $accueilClass;?>"><i class="fa fa-home"></i>Accueil</a>
-            <a href="index.php?p=annonces.index" class="menu-item <?= $annonceClass;?>">Annonces</a>
+            <!-- <a href="index.php?p=annonces.index" class="menu-item <?//= $annonceClass;?>">Annonces</a>-->
             <a href="index.php?p=fikrs.index" class="menu-item <?= $fikrClass;?>">Fikr</a>
             <a href="index.php?p=auteurs.index" class="menu-item <?= $auteurClass;?>">Oulémas</a>
             <a href="index.php?p=contacter.nous" class="menu-item important">Contact</a>

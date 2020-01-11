@@ -12,7 +12,7 @@ $auteurClass = "";
         <div class="container">
         <?php foreach($annonces as $post): ?>
             <article class="article">
-                <a href="<?= $post->url ?>" class="article-img"><img src="<?= $post->photo ?>" alt="<?= $post->titre; ?>"></a>
+                <a href="<?= $post->photo ?>" class="article-img"><img src="<?= $post->photo ?>" alt="<?= $post->titre; ?>"></a>
                 <div class="article-date">Publié le <?= $post->date; ?></div>
                 <h2 class="article-title"><a href="<?= $post->url ?>" ><?= $post->titre; ?></a></h2>
                 <p>
