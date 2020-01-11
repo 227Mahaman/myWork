@@ -25,6 +25,8 @@
               <a class="navbar-brand" href="?p=admin.categories.index">Catégorie</a>
               <a class="navbar-brand" href="?p=admin.fikrs.index">Fikr</a>
               <a class="navbar-brand" href="?p=admin.datas.index">Data</a>
+              <a class="navbar-brand" href="?p=admin.langues.index">Langue</a>
+              <a class="navbar-brand" href="?p=admin.regions.index">Region</a>
               <a class="navbar-brand" href="?p=users.deconnexion">Déconnexion</a>
                 
             </div>
