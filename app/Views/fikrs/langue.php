@@ -21,7 +21,7 @@ $contactClass= "";
         </div>
     </main>
     <aside class="sidebar">
-        <h4 class="sidebar-title">Langues</h4>
+        <h4 class="sidebar-title">Langue</h4>
         <ul>
             <?php foreach($langues as $langue): ?>
                 <li><a href="?p=fikrs.langue&id=<?= $langue->id;?>" data-count="10"><?= $langue->titre;?></a></li>

@@ -19,7 +19,7 @@ class FikrsController extends AppController
         parent::__construct();
         $this->loadModel('Fikr');
         $this->loadModel('Auteur');
-        $this->loadModel('Category');
+        $this->loadModel('Langue');
     }
     /**
      * Index function
@@ -29,34 +29,44 @@ class FikrsController extends AppController
     public function index(){
        $fikrs = $this->Fikr->lastFikr();
        $auteurs = $this->Auteur->all();
-       $categories = $this->Category->all();
+       $langues = $this->Langue->all();
        /**
         * Génération des vues grace à la fonction render (Core\Controller)
         * Contenir les variables et leurs valeurs grace à la fonction compact de php
         * @param String la vue
         * @param Array variables à contenir
         */ 
-       $this->render('fikrs.index', compact('fikrs', 'auteurs', 'categories'));
+       $this->render('fikrs.index', compact('fikrs', 'auteurs', 'langues'));
     }
     /**
-     * Category function
-     * Englobe tous les donnees dont à besoin la vue category
+     * Langue function
+     * Englobe tous les donnees dont à besoin la vue langue
      * @return void
      */
-    public function category(){
-        $categorie = $this->Category->find($_GET['id']);
-        if($categorie === false){
-            $this->notFound();
-        }
-        $annonces = $this->Annonce->lastByCategory($_GET['id']);
-        $categories = $this->Category->all();
+    public function langue(){
+        $auteurs = $this->Auteur->all();
+        $langues = $this->Langue->all();
+        $fikrs = $this->Fikr->fikrWithLangue($_GET['id']);
         /**
          * Génération de la vue grace à la fonction render (Core\Controller)
          * Contenir les variables et leurs valeurs grace à la fonction compact de php
          * @param String la vue
          * @param Array variables à contenir
          */
-        $this->render('annonces.categorie', compact('annonces', 'categories', 'categorie'));
+        $this->render('fikrs.langue', compact('auteurs', 'langues', 'fikrs'));
+    }
+
+    public function auteur(){
+        $auteurs = $this->Auteur->all();
+        $langues = $this->Langue->all();
+        $fikrs = $this->Fikr->fikrWithAuteur($_GET['id']);
+        /**
+         * Génération de la vue grace à la fonction render (Core\Controller)
+         * Contenir les variables et leurs valeurs grace à la fonction compact de php
+         * @param String la vue
+         * @param Array variables à contenir
+         */
+        $this->render('fikrs.auteur', compact('auteurs', 'langues', 'fikrs'));
     }
     /**
      * Detail function

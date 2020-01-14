@@ -41,12 +41,34 @@ class FikrTable extends Table
      */
     public function lastFikr(){
         return $this->query("
-            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom
+            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue
             FROM fikrs 
             LEFT JOIN auteurs ON auteur=auteurs.id
+            LEFT JOIN langues ON langue_id=langues.id
             ORDER BY fikrs.date DESC
         ");
     }
+
+    public function fikrWithLangue($langue_id){
+        return $this->query("
+            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue
+            FROM fikrs 
+            LEFT JOIN auteurs ON auteur=auteurs.id
+            LEFT JOIN langues ON langue_id=langues.id
+            WHERE fikrs.langue_id = ?
+        ",[$langue_id]);
+    }
+
+    public function fikrWithAuteur($auteur){
+        return $this->query("
+            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue
+            FROM fikrs 
+            LEFT JOIN auteurs ON auteur=auteurs.id
+            LEFT JOIN langues ON langue_id=langues.id
+            WHERE fikrs.auteur = ?
+        ",[$auteur]);
+    }
+
     /**
      * findAuteur function
      * Récupére les dernieres fikrs de la auteur selectionnée

@@ -1,5 +1,5 @@
 <?php
-$title="Accueil";
+$title="Fikr | Auteur";
 $accueilClass = "";
 $fikrClass = "active";
 $articleClass = "";
@@ -11,7 +11,6 @@ $contactClass= "";
         <div class="container">
         <?php foreach($fikrs as $fikr): ?>
             <article class="article">
-                <!-- <a href="article.php" class="article-img"><img src="img/article.jpg" alt=""></a> -->
                 <div class="article-date">Publié le <?= $fikr->date;?></div>
                 <h2 class="article-title"><a href="<?= $fikr->url?>"><?= $fikr->titre ?></a></h2>
                 <div class="article-date">Langue : <?= $fikr->langue ?></div>
@@ -21,7 +20,7 @@ $contactClass= "";
         </div>
     </main>
     <aside class="sidebar">
-        <h4 class="sidebar-title">Langues</h4>
+    <h4 class="sidebar-title">Langue</h4>
         <ul>
             <?php foreach($langues as $langue): ?>
                 <li><a href="?p=fikrs.langue&id=<?= $langue->id;?>" data-count="10"><?= $langue->titre;?></a></li>
