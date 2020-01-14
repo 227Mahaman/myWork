@@ -24,7 +24,8 @@ class FikrsController extends AppController
                 'titre' => $_POST['titre'],
                 'livre' => $_POST['livre'],
                 'auteur' => $_POST['auteur'],
-                'date' => $_POST['date']
+                'date' => $_POST['date'],
+                'langue_id' => $_POST['langue_id']
             ]);
             if($result){
                 return $this->index();
@@ -32,8 +33,10 @@ class FikrsController extends AppController
         }
         $this->loadModel('Auteur');
         $auteurs = $this->Auteur->extract('id', 'nom');
+        $this->loadModel('Langue');
+        $langues = $this->Langue->extract('id', 'code', 'titre');
         $form = new BootstrapForm($_POST);
-        $this->render('admin.fikrs.edit', compact('auteurs', 'form'));
+        $this->render('admin.fikrs.edit', compact('auteurs', 'langues', 'form'));
     }
 
     public function edit(){
@@ -42,7 +45,8 @@ class FikrsController extends AppController
                 'titre' => $_POST['titre'],
                 'livre' => $_POST['livre'],
                 'auteur' => $_POST['auteur'],
-                'date' => $_POST['date']
+                'date' => $_POST['date'],
+                'langue_id' => $_POST['langue_id']
             ]);
             if($result){
                 return $this->index();
@@ -51,8 +55,10 @@ class FikrsController extends AppController
         $fikr = $this->Fikr->find($_GET['id']);
         $this->loadModel('Auteur');
         $auteurs = $this->Auteur->extract('id', 'nom');
+        $this->loadModel('Langue');
+        $langues = $this->Langue->extract('id', 'code', 'titre');
         $form = new BootstrapForm($fikr);
-        $this->render('admin.fikrs.edit', compact('auteurs','form'));
+        $this->render('admin.fikrs.edit', compact('auteurs', 'langues', 'form'));
     }
 
     public function delete(){
