@@ -28,8 +28,8 @@ class FikrsController extends AppController
      */
     public function index(){
        $fikrs = $this->Fikr->lastFikr();
-       $auteurs = $this->Auteur->all();
-       $langues = $this->Langue->all();
+       $auteurs = $this->Auteur->allWithCountFikr();
+       $langues = $this->Langue->allWithCountFikr();
        /**
         * Génération des vues grace à la fonction render (Core\Controller)
         * Contenir les variables et leurs valeurs grace à la fonction compact de php
@@ -44,8 +44,8 @@ class FikrsController extends AppController
      * @return void
      */
     public function langue(){
-        $auteurs = $this->Auteur->all();
-        $langues = $this->Langue->all();
+        $auteurs = $this->Auteur->allWithCountFikr();
+        $langues = $this->Langue->allWithCountFikr();
         $fikrs = $this->Fikr->fikrWithLangue($_GET['id']);
         /**
          * Génération de la vue grace à la fonction render (Core\Controller)
@@ -57,8 +57,8 @@ class FikrsController extends AppController
     }
 
     public function auteur(){
-        $auteurs = $this->Auteur->all();
-        $langues = $this->Langue->all();
+        $auteurs = $this->Auteur->allWithCountFikr();
+        $langues = $this->Langue->allWithCountFikr();
         $fikrs = $this->Fikr->fikrWithAuteur($_GET['id']);
         /**
          * Génération de la vue grace à la fonction render (Core\Controller)

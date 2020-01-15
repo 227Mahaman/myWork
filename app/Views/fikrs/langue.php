@@ -24,14 +24,14 @@ $contactClass= "";
         <h4 class="sidebar-title">Langue</h4>
         <ul>
             <?php foreach($langues as $langue): ?>
-                <li><a href="?p=fikrs.langue&id=<?= $langue->id;?>" data-count="10"><?= $langue->titre;?></a></li>
+                <li><a href="?p=fikrs.langue&id=<?= $langue->id;?>" data-count="<?= $langue->nombre;?>"><?= $langue->titre;?></a></li>
             <?php endforeach; ?>
         </ul>
         <hr>
         <h4 class="sidebar-title">Oulémas</h4>
         <ul>
             <?php foreach($auteurs as $auteur): ?>
-            <li><a href="?p=fikrs.auteur&id=<?= $auteur->id;?>"><?= $auteur->nom; $auteur->prenom;?></a></li>
+            <li><a href="?p=fikrs.auteur&id=<?= $auteur->id;?>" data-count="<?= $auteur->nombre;?>"><?= $auteur->nom; $auteur->prenom;?></a></li>
             <?php endforeach; ?>
         </ul>
     </aside>

@@ -37,12 +37,12 @@ class AuteurTable extends Table
      * Tous les auteurs
      * @return
      */
-    /**public function all(){
+    public function allWithCountFikr(){
         return $this->query("
-            SELECT auteurs.id, auteurs.nom, auteurs.prenom
+            SELECT auteurs.id, auteurs.nom, auteurs.prenom, (SELECT COUNT(fikrs.id) as nombre FROM fikrs WHERE fikrs.auteur=auteurs.id) as nombre
             FROM auteurs
         ");
-    }*/
+    }
     /**
      * All With Region function
      * Tous les auteurs avec leurs régions
