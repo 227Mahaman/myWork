@@ -26,14 +26,14 @@ $auteurClass = "";
         <h4 class="sidebar-title">Annonces</h4>
         <ul>
             <?php foreach($categories as $categorie): ?>
-                <li><a href="<?= $categorie->url ?>" data-count="1"><?= $categorie->titre; ?></a></li>
+                <li><a href="<?= $categorie->url ?>" data-count="<?= $categorie->nombre ?>"><?= $categorie->titre; ?></a></li>
             <?php endforeach; ?>
         </ul>
         <hr>
         <h4 class="sidebar-title">Fikrs</h4>
         <ul>
             <?php foreach($fikrs as $fikr): ?>
-                <li><a href="<?= $fikr->url ?>" data-count=""><?= $fikr->titre; ?></a></li>
+                <li><a href="<?= $fikr->url ?>" data-count="<?= $fikr->nombre ?>"><?= $fikr->titre; ?></a></li>
             <?php endforeach; ?>
         </ul>
     </aside>

@@ -28,8 +28,8 @@ class AnnoncesController extends AppController
      */
     public function index(){
        $annonces = $this->Annonce->last();
-       $categories = $this->Category->all();
-       $fikrs = $this->Fikr->all();
+       $categories = $this->Category->allWithCountFikr();
+       $fikrs = $this->Fikr->allWithCount();
        /**
         * Génération des vues grace à la fonction render (Core\Controller)
         * Contenir les variables et leurs valeurs grace à la fonction compact de php

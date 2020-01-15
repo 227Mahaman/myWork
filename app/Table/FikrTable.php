@@ -13,13 +13,11 @@ class FikrTable extends Table
      * @var Int fikr_id
      * @return
      */
-    public function allWithCount($fikr_id){
+    public function allWithCount(){
         return $this->query("
-            SELECT COUNT(datas.id) as nombre
-            FROM fikrs 
-            LEFT JOIN datas ON fikrs.id=datas.fikr
-            WHERE fikrs.id = ?
-        ",[$fikr_id]);
+            SELECT fikrs.id, fikrs.titre, fikrs.date, (SELECT COUNT(datas.id) FROM datas WHERE datas.fikr=fikrs.id) as nombre
+            FROM fikrs
+        ");
     }
     /**
      * All function
