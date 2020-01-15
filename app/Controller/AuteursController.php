@@ -29,7 +29,7 @@ class AuteursController extends AppController
      */
     public function index(){
         $auteurs = $this->Auteur->allWithRegion();
-        $regions = $this->Region->all();
+        $regions = $this->Region->allWithCountFikr();
         /**
          * Génération des vues grace à la fonction render (Core\Controller)
          * Contenir les variables et leurs valeurs grace à la fonction compact de php
@@ -60,7 +60,7 @@ class AuteursController extends AppController
             $this->notFound();
         }
         $auteurs = $this->Auteur->lastByRegion($_GET['id']);
-        $regions = $this->Region->all();
+        $regions = $this->Region->allWithCountFikr();
         /**
          * Génération de la vue grace à la fonction render (Core\Controller)
          * Contenir les variables et leurs valeurs grace à la fonction compact de php

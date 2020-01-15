@@ -29,7 +29,7 @@ $auteurClass = "active";
         <hr>
         <ul>
             <?php foreach($regions as $region): ?>
-                <li><a href="<?= $region->url ?>" data-count="1"><?= $region->titre; ?></a></li>
+                <li><a href="<?= $region->url ?>" data-count="<?= $region->nombre; ?>"><?= $region->titre; ?></a></li>
             <?php endforeach; ?>
         </ul>
     </aside>

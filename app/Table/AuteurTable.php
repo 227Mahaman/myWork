@@ -39,7 +39,7 @@ class AuteurTable extends Table
      */
     public function allWithCountFikr(){
         return $this->query("
-            SELECT auteurs.id, auteurs.nom, auteurs.prenom, (SELECT COUNT(fikrs.id) as nombre FROM fikrs WHERE fikrs.auteur=auteurs.id) as nombre
+            SELECT auteurs.id, auteurs.nom, auteurs.prenom, (SELECT COUNT(fikrs.id) FROM fikrs WHERE fikrs.auteur=auteurs.id) as nombre
             FROM auteurs
         ");
     }

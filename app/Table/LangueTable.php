@@ -10,7 +10,7 @@ class LangueTable extends Table
 
     public function allWithCountFikr(){
         return $this->query("
-            SELECT langues.id, langues.code, langues.titre, (SELECT COUNT(fikrs.id) as nombre FROM fikrs WHERE fikrs.langue_id=langues.id) as nombre
+            SELECT langues.id, langues.code, langues.titre, (SELECT COUNT(fikrs.id) FROM fikrs WHERE fikrs.langue_id=langues.id) as nombre
             FROM langues
         ");
     }
