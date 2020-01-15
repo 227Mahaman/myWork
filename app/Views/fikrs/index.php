@@ -15,7 +15,7 @@ $contactClass= "";
                 <div class="article-date">Publié le <?= $fikr->date;?></div>
                 <h2 class="article-title"><a href="<?= $fikr->url?>"><?= $fikr->titre ?></a></h2>
                 <div class="article-date">Langue : <?= $fikr->langue ?></div>
-                <p>Lectures: <span>11</span> | Auteur: <span><?= $fikr->nom .' '. $fikr->prenom; ?></span> | Livre: <span><?= $fikr->livre ?></span></p>
+                <p>Lectures: <span><?= $fikr->nombre ?></span> | Auteur: <span><?= $fikr->nom .' '. $fikr->prenom; ?></span> | Livre: <span><?= $fikr->livre ?></span></p>
             </article>
         <?php endforeach; ?>
         </div>

@@ -41,7 +41,7 @@ class FikrTable extends Table
      */
     public function lastFikr(){
         return $this->query("
-            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue
+            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue, (SELECT COUNT(datas.id) as nombre FROM datas WHERE datas.fikr=fikrs.id) as nombre
             FROM fikrs 
             LEFT JOIN auteurs ON auteur=auteurs.id
             LEFT JOIN langues ON langue_id=langues.id
@@ -51,7 +51,7 @@ class FikrTable extends Table
 
     public function fikrWithLangue($langue_id){
         return $this->query("
-            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue
+            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue, (SELECT COUNT(datas.id) as nombre FROM datas WHERE datas.fikr=fikrs.id) as nombre
             FROM fikrs 
             LEFT JOIN auteurs ON auteur=auteurs.id
             LEFT JOIN langues ON langue_id=langues.id
@@ -61,12 +61,20 @@ class FikrTable extends Table
 
     public function fikrWithAuteur($auteur){
         return $this->query("
-            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue
+            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue, (SELECT COUNT(datas.id) as nombre FROM datas WHERE datas.fikr=fikrs.id) as nombre
             FROM fikrs 
             LEFT JOIN auteurs ON auteur=auteurs.id
             LEFT JOIN langues ON langue_id=langues.id
             WHERE fikrs.auteur = ?
         ",[$auteur]);
+    }
+
+    public function nombreByFikr($id){
+        return $this->query("
+            SELECT COUNT(datas.id) as nombre
+            FROM datas
+            WHERE fikr = ?
+        ",[$id]);
     }
 
     /**
