@@ -34,7 +34,34 @@
     <?= $content;?>
 
     <footer class="footer fixed-top"><!-- fixation du footer -->
-        <p>Crée par des Jeunes Musulmans Informaticien du NIGER | &copy; Tous droits réservés à IslamNiger 2020</p>
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>IslamNiger</h3>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <div class="social-links">
+              
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>IslamNiger</strong>. Tous droits reservés
+      </div>
+      <div class="credits">
+        Designed by <a href="#">des Jeunes Musulmans Informaticien du NIGER</a>
+      </div>
+    </div>
+        <!--<p>Crée par des Jeunes Musulmans Informaticien du NIGER | &copy; Tous droits réservés à IslamNiger 2020</p>-->
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
