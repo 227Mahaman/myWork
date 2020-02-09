@@ -1,5 +1,5 @@
 <?php
-$title="Fikrs";
+$title="Recherche sur les fikrs";
 $accueilClass = "";
 $fikrClass = "active";
 $articleClass = "";
@@ -10,19 +10,22 @@ $contactClass= "";
     <main class="main">
         <div class="container">
         <?php if($errors): ?>
-            <div class="alert alert-danger" role="dialog">
+            <div class="alert alert-danger">
                 Recherhe introuvable
             </div>
         <?php endif;?>
-        <?php foreach($fikrs as $fikr): ?>
-            <article class="article">
-                <!-- <a href="article.php" class="article-img"><img src="img/article.jpg" alt=""></a> -->
-                <div class="article-date">Publié le <?= $fikr->date;?></div>
-                <h2 class="article-title"><a href="<?= $fikr->url?>"><?= $fikr->titre ?></a></h2>
-                <div class="article-date">Langue : <?= $fikr->langue ?></div>
-                <p>Lectures: <span><?= $fikr->nombre ?></span> | Auteur: <span><?= $fikr->nom .' '. $fikr->prenom; ?></span> | Livre: <span><?= $fikr->livre ?></span></p>
-            </article>
-        <?php endforeach; ?>
+        <?php if($result)
+            {
+                foreach($result as $fikr): ?>
+                <article class="article">
+                    <!-- <a href="article.php" class="article-img"><img src="img/article.jpg" alt=""></a> -->
+                    <div class="article-date">Publié le <?= $fikr->date;?></div>
+                    <h2 class="article-title"><a href="<?= $fikr->url?>"><?= $fikr->titre ?></a></h2>
+                    <div class="article-date">Langue : <?= $fikr->langue ?></div>
+                    <p>Lectures: <span><?= $fikr->nombre ?></span> | Auteur: <span><?= $fikr->nom .' '. $fikr->prenom; ?></span> | Livre: <span><?= $fikr->livre ?></span></p>
+                </article><?php endforeach; 
+            }
+        ?>
         </div>
     </main>
     <aside class="sidebar">
@@ -43,4 +46,4 @@ $contactClass= "";
             <?php endforeach; ?>
         </ul>
     </aside>
-</div> 
+</div>

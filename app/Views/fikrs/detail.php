@@ -1,5 +1,5 @@
 <?php
-$title="Accueil";
+$title="Fikrs";
 $accueilClass = "";
 $fikrClass = "active";
 $articleClass = "";

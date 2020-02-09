@@ -75,6 +75,16 @@ class FikrTable extends Table
         ",[$id]);
     }
 
+    public function recherche($search){
+        return $this->query("
+            SELECT fikrs.id, fikrs.titre, fikrs.livre, fikrs.date, auteurs.nom, auteurs.prenom, langues.titre as langue, (SELECT COUNT(datas.id) FROM datas WHERE datas.fikr=fikrs.id) as nombre
+            FROM fikrs
+            JOIN auteurs ON auteur=auteurs.id
+            LEFT JOIN langues ON langue_id=langues.id
+            WHERE fikrs.titre = ?
+        ",[$search]);
+    }
+
     /**
      * findAuteur function
      * Récupére les dernieres fikrs de la auteur selectionnée

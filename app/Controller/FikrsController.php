@@ -7,6 +7,8 @@ namespace App\Controller;
 
 use Core\Controller\Controller;
 
+use Core\HTML\BootstrapForm;
+
 class FikrsController extends AppController
 {
     /**
@@ -27,16 +29,28 @@ class FikrsController extends AppController
      * @return void
      */
     public function index(){
-       $fikrs = $this->Fikr->lastFikr();
-       $auteurs = $this->Auteur->allWithCountFikr();
-       $langues = $this->Langue->allWithCountFikr();
+        $errors = false;
+        $fikrs = $this->Fikr->lastFikr();
+        $auteurs = $this->Auteur->allWithCountFikr();
+        $langues = $this->Langue->allWithCountFikr();
+        $form = new BootstrapForm($_POST);
+        if(!empty($_POST)){
+            $result = $this->Fikr->recherche($_POST['search']);
+            if($result){
+                return $this->render('fikrs.search', compact('result', 'auteurs', 'langues', 'form', 'errors'));
+            }
+            else {
+                $errors = true;
+                return $this->render('fikrs.index', compact('fikrs', 'auteurs', 'langues', 'form', 'errors'));
+            }
+        }
        /**
         * Génération des vues grace à la fonction render (Core\Controller)
         * Contenir les variables et leurs valeurs grace à la fonction compact de php
         * @param String la vue
         * @param Array variables à contenir
         */ 
-       $this->render('fikrs.index', compact('fikrs', 'auteurs', 'langues'));
+       $this->render('fikrs.index', compact('fikrs', 'auteurs', 'langues', 'form', 'errors'));
     }
     /**
      * Langue function
@@ -87,5 +101,9 @@ class FikrsController extends AppController
         * @param Array variables à contenir
         */
         $this->render('fikrs.detail', compact('datas', 'auteur'));
+    }
+    public function search($search){
+        var_dump();
+        die();
     }
 }
