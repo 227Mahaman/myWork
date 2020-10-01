@@ -27,7 +27,7 @@ $contactClass= "";
     </main>
     <aside class="sidebar">
         <form method="post">
-            <?= $form->input('search', 'Recheche'); ?><button class="btn btn-primary">Recheche</button>
+            <?= $form->input('search', 'Recherche'); ?><button class="btn btn-primary">Recherche</button>
         </form>
         <h4 class="sidebar-title">Langues</h4>
         <ul>
